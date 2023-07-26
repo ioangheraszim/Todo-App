@@ -29,54 +29,28 @@ body {
   background-image: url("./src/assets/images/bg-desktop-dark.jpg");
   background-size: cover;
 }
-.container .todo-list {
+.container .wrapper {
+  position: absolute;
+  top: 5%;
   width: 750px;
-  padding: 20px;
-  border-radius: 5px;
   border: 1px solid green;
+}
+.container .wrapper .header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
 }
-.container .header {
-  display: flex;
-}
-.container .header .logo {
+.container .wrapper .header .logo {
+  color: #fff;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
 }
-.container .header .change-button {
-  margin-left: auto;
-  background-color: #55aaff;
+.container .wrapper .header .change-button {
+  background-color: transparent;
   color: #ffffff;
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.todo-item {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #cccccc;
-  width: 100%;
-}
-
-.todo-item:last-child {
-  border-bottom: none;
-}
-
-.checkbox {
-  margin-right: 10px;
-}
-
-.input-field {
-  width: 100%;
-  margin-top: 20px;
-  padding: 8px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
 }/*# sourceMappingURL=styles.css.map */
