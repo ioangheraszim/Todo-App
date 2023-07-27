@@ -26,7 +26,6 @@ button {
   color: hsl(234, 11%, 52%);
   font-size: 1rem;
 }
-
 button:hover {
   color: hsl(220, 98%, 61%);
 }
@@ -77,9 +76,12 @@ input[type=checkbox]:checked + label::after {
   transform: translate(-50%, -50%) scale(1); /* Scale to 1 on checked state */
 }
 
+button img {
+  width: 1rem;
+}
+
 .container {
   position: relative;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,24 +98,27 @@ input[type=checkbox]:checked + label::after {
   background-image: url("./src/assets/images/bg-desktop-dark.jpg");
   background-size: cover;
 }
-.container .wrapper {
+
+.wrapper {
   position: absolute;
   top: 5%;
-  width: 750px;
-  padding: 1rem;
+  max-width: 750px;
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
 }
-.container .wrapper .header {
+
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
 }
-.container .wrapper .header .logo {
+.header .logo {
   color: #fff;
   font-size: 24px;
   font-weight: bold;
 }
-.container .wrapper .header .change-button {
+.header .change-button {
   background-color: transparent;
   color: #ffffff;
   border: none;
@@ -121,12 +126,16 @@ input[type=checkbox]:checked + label::after {
   border-radius: 5px;
   cursor: pointer;
 }
-.container .wrapper .add-todo {
+.header .change-button img {
+  width: 1.5rem;
+}
+
+.add-todo {
   margin-bottom: 1.5rem;
 }
-.container .wrapper .add-todo .input-field {
+.add-todo .input-field {
   background-color: hsl(0, 0%, 98%);
-  padding: 0.7rem;
+  padding: 0.3rem;
   width: 100%;
   border: none;
   border-bottom: 1px solid hsl(233, 14%, 35%);
@@ -134,19 +143,16 @@ input[type=checkbox]:checked + label::after {
   display: flex;
   border-radius: 6px;
 }
-.container .wrapper .add-todo .input-field input[type=text] {
-  margin-left: 1rem;
+.add-todo .input-field input[type=text] {
   font-size: 18px;
   border: none;
   outline: none;
 }
-.container .wrapper .add-todo .input-field input[type=checkbox] {
+.add-todo .input-field input[type=checkbox] {
   display: none;
 }
-.container .wrapper .list-items .items:hover .action-btns {
-  visibility: visible;
-}
-.container .wrapper .list-items .items {
+
+.list-items .items {
   padding: 0.7rem;
   outline: 1px solid hsl(0, 0%, 98%);
   border-radius: 5px;
@@ -155,20 +161,44 @@ input[type=checkbox]:checked + label::after {
   align-items: center;
   justify-content: space-between;
 }
-.container .wrapper .list-items .items .todo-item {
+.list-items .items .todo-item {
   display: flex;
   align-items: center;
 }
-.container .wrapper .list-items .items .action-btns {
-  visibility: hidden;
+.list-items .items .action-btns {
+  visibility: visible;
 }
-.container .wrapper .list-items .footer {
+.list-items .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
   padding: 1rem;
 }
-.container .wrapper .list-items .info-text {
+.list-items .footer .button-wrapper {
+  display: none;
+}
+.list-items .button-wrapper-mb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.list-items .info-text {
   text-align: center;
+}
+
+.message-txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@media (min-width: 650px) {
+  .list-items .footer .button-wrapper {
+    display: block;
+  }
+  .list-items .button-wrapper-mb {
+    display: none;
+  }
 }/*# sourceMappingURL=styles.css.map */

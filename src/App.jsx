@@ -15,7 +15,7 @@ function App() {
         </div>
         <div className='add-todo'>
           <div className='input-field'>
-              <button>Add</button>         
+              <button><img src='./src/assets/images/add-circle.svg'/></button>         
               <input className='item-input' type="text" class="input-field" placeholder="Create a new todo..." />
           </div>
         </div>
@@ -24,11 +24,11 @@ function App() {
             <div class="todo-item">
               <input type="checkbox" id="myCheckbox" />
               <label for="myCheckbox"></label>
-              <span>i have nothing here but dummy text</span>
+              <p>this is task number 1 </p>              
             </div>
             <div className="action-btns">
-              <button>Edit</button>
-              <button>Delete</button>
+              <button><img src='./src/assets/images/pencil.svg' /></button>
+              <button><img src='./src/assets/images/icon-cross.svg' /></button>
             </div> 
           </div>
           <div className='footer'>
@@ -44,10 +44,19 @@ function App() {
               <button className='clear-btn'>Clear Completed</button>
             </div>
           </div>
+          <div className='button-wrapper-mb'>
+              <button>All</button>
+              <button>Active</button>
+              <button>Completed</button>
+          </div>
           
         </div>
+        <div className="message-txt">
+          <p className="info-txt"> Drag and drop to reorder list </p>
+        </div>
+        
       </div>
-      <p className="info-txt"> Drag and drop to reorder list </p>
+      
     </div>    
   )
 }
