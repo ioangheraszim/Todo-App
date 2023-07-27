@@ -3,7 +3,7 @@
 /* Primary Colors */
 
 $bright-blue: hsl(220, 98%, 61%);
-$check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$check-background: linear-gradient(192deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
 /*Neutral Colors*/
 
@@ -36,6 +36,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
+    
 }
 
 button {
@@ -52,6 +53,52 @@ button:hover {
     color:$bright-blue;
 }
 
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Create the custom circular checkbox */
+input[type="checkbox"] + label {
+    margin-right: 1.5rem;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid $lightgray-blue;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Show the checkmark when the checkbox is checked */
+input[type="checkbox"]:checked + label::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background: $check-background;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Center the checkmark symbol within the circle */
+input[type="checkbox"] + label::after {
+    content: url('./src/assets/images/icon-check.svg'); /* Checkmark symbol */
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0); /* Initially scale to 0 */
+    transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+/* Show the checkmark when the checkbox is checked */
+input[type="checkbox"]:checked + label::after {
+    transform: translate(-50%, -50%) scale(1); /* Scale to 1 on checked state */
+}
+
 .container {
     position: relative;
     overflow: hidden;
@@ -61,7 +108,7 @@ button:hover {
     min-height: 100vh;
     flex-direction: column;
     background-color: $verylight-gray;
-
+    
     .top-background {
         position: absolute;
         top: 0;
@@ -100,7 +147,8 @@ button:hover {
             }
         }
 
-        .list-items {
+        .add-todo {
+            margin-bottom: 1.5rem;
 
             .input-field {
                 background-color: $verylight-gray;
@@ -123,17 +171,34 @@ button:hover {
                    display: none;
                 }
             }
+        }
+
+        .list-items {
+
+            .items:hover {
+                .action-btns {
+                    visibility:visible;
+                }
+            }
 
             .items {
                 padding: .7rem;
-                margin-top: 1rem;
                 outline: 1px solid $verylight-gray;
                 border-radius: 5px;
                 background-color: #fff;
                 
-                .todo-item {
-                    padding: 1rem;
-                    border-bottom: 1px solid $verylight-grayish;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .todo-item {  
+                    display: flex;
+                    align-items: center;
+                    
+                }
+
+                .action-btns {
+                    visibility: hidden;
                 }
             }
 

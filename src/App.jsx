@@ -13,20 +13,24 @@ function App() {
               <button class="change-button"><img src='./src/assets/images/icon-sun.svg'/></button>
             </div>           
         </div>
-        <div className="list-items">
+        <div className='add-todo'>
           <div className='input-field'>
-            <input type="checkbox" />          
-            <input className='item-input' type="text" class="input-field" placeholder="Create a new todo..." />
+              <button>Add</button>         
+              <input className='item-input' type="text" class="input-field" placeholder="Create a new todo..." />
           </div>
-
-
+        </div>
+        <div className="list-items">
           <div className="items">
             <div class="todo-item">
-              <input type="checkbox" />
-              <span>Item 1</span>
+              <input type="checkbox" id="myCheckbox" />
+              <label for="myCheckbox"></label>
+              <span>i have nothing here but dummy text</span>
+            </div>
+            <div className="action-btns">
+              <button>Edit</button>
+              <button>Delete</button>
             </div> 
           </div>
-
           <div className='footer'>
             <div className='left-side'>
                 <p>5 items left</p>
@@ -42,7 +46,6 @@ function App() {
           </div>
           
         </div>
-       
       </div>
       <p className="info-txt"> Drag and drop to reorder list </p>
     </div>    

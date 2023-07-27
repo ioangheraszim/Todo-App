@@ -31,6 +31,52 @@ button:hover {
   color: hsl(220, 98%, 61%);
 }
 
+/* Hide the default checkbox */
+input[type=checkbox] {
+  display: none;
+}
+
+/* Create the custom circular checkbox */
+input[type=checkbox] + label {
+  margin-right: 1.5rem;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid hsl(233, 11%, 84%);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Show the checkmark when the checkbox is checked */
+input[type=checkbox]:checked + label::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(192deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Center the checkmark symbol within the circle */
+input[type=checkbox] + label::after {
+  content: url("./src/assets/images/icon-check.svg"); /* Checkmark symbol */
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0); /* Initially scale to 0 */
+  transition: transform 0.3s ease; /* Add a smooth transition */
+}
+
+/* Show the checkmark when the checkbox is checked */
+input[type=checkbox]:checked + label::after {
+  transform: translate(-50%, -50%) scale(1); /* Scale to 1 on checked state */
+}
+
 .container {
   position: relative;
   overflow: hidden;
@@ -75,7 +121,10 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
 }
-.container .wrapper .list-items .input-field {
+.container .wrapper .add-todo {
+  margin-bottom: 1.5rem;
+}
+.container .wrapper .add-todo .input-field {
   background-color: hsl(0, 0%, 98%);
   padding: 0.7rem;
   width: 100%;
@@ -85,25 +134,33 @@ button:hover {
   display: flex;
   border-radius: 6px;
 }
-.container .wrapper .list-items .input-field input[type=text] {
+.container .wrapper .add-todo .input-field input[type=text] {
   margin-left: 1rem;
   font-size: 18px;
   border: none;
   outline: none;
 }
-.container .wrapper .list-items .input-field input[type=checkbox] {
+.container .wrapper .add-todo .input-field input[type=checkbox] {
   display: none;
+}
+.container .wrapper .list-items .items:hover .action-btns {
+  visibility: visible;
 }
 .container .wrapper .list-items .items {
   padding: 0.7rem;
-  margin-top: 1rem;
   outline: 1px solid hsl(0, 0%, 98%);
   border-radius: 5px;
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .container .wrapper .list-items .items .todo-item {
-  padding: 1rem;
-  border-bottom: 1px solid hsl(236, 33%, 92%);
+  display: flex;
+  align-items: center;
+}
+.container .wrapper .list-items .items .action-btns {
+  visibility: hidden;
 }
 .container .wrapper .list-items .footer {
   display: flex;
