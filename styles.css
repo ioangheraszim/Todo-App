@@ -1,3 +1,8 @@
+/* Colors */
+/* Primary Colors */
+/*Neutral Colors*/
+/* Light Theme */
+/* Dark Theme Colors */
 *, ::before, ::after {
   box-sizing: border-box;
   margin: 0;
@@ -8,7 +13,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+button {
+  border: none;
+  margin: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 700;
+  color: hsl(234, 11%, 52%);
+  font-size: 1rem;
+}
+
+button:hover {
+  color: hsl(220, 98%, 61%);
 }
 
 .container {
@@ -19,6 +39,7 @@ body {
   align-items: center;
   min-height: 100vh;
   flex-direction: column;
+  background-color: hsl(0, 0%, 98%);
 }
 .container .top-background {
   position: absolute;
@@ -33,7 +54,7 @@ body {
   position: absolute;
   top: 5%;
   width: 750px;
-  border: 1px solid green;
+  padding: 1rem;
 }
 .container .wrapper .header {
   display: flex;
@@ -53,4 +74,44 @@ body {
   padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
+}
+.container .wrapper .list-items .input-field {
+  background-color: hsl(0, 0%, 98%);
+  padding: 0.7rem;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid hsl(233, 14%, 35%);
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  border-radius: 6px;
+}
+.container .wrapper .list-items .input-field input[type=text] {
+  margin-left: 1rem;
+  font-size: 18px;
+  border: none;
+  outline: none;
+}
+.container .wrapper .list-items .input-field input[type=checkbox] {
+  display: none;
+}
+.container .wrapper .list-items .items {
+  padding: 0.7rem;
+  margin-top: 1rem;
+  outline: 1px solid hsl(0, 0%, 98%);
+  border-radius: 5px;
+  background-color: #fff;
+}
+.container .wrapper .list-items .items .todo-item {
+  padding: 1rem;
+  border-bottom: 1px solid hsl(236, 33%, 92%);
+}
+.container .wrapper .list-items .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 1rem;
+}
+.container .wrapper .list-items .info-text {
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */

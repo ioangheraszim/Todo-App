@@ -1,3 +1,29 @@
+// Variables
+/* Colors */
+/* Primary Colors */
+
+$bright-blue: hsl(220, 98%, 61%);
+$check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
+/*Neutral Colors*/
+
+/* Light Theme */
+
+$verylight-gray: hsl(0, 0%, 98%);
+$verylight-grayish: hsl(236, 33%, 92%);
+$lightgray-blue: hsl(233, 11%, 84%);
+$verydark-greyishblue: hsl(235, 19%, 35%);
+
+/* Dark Theme Colors */
+
+$verydark-blue:  hsl(235, 21%, 11%);
+$verydark-desaturated-blue: hsl(235, 24%, 19%);
+$light-grayish-blue: hsl(234, 39%, 85%);
+$light-grayish-blue-hover: hsl(236, 33%, 92%);
+$dark-grayish-blue:  hsl(234, 11%, 52%);
+$vd-grayish-blue: hsl(233, 14%, 35%);
+$vd-grayish-blue-b: hsl(237, 14%, 26%);
+
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 0;
@@ -8,10 +34,25 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+}
 
-  .container {
+button {
+    border: none;
+    margin: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    color: $dark-grayish-blue;
+    font-size: 1rem;
+}
+
+button:hover {
+    color:$bright-blue;
+}
+
+.container {
     position: relative;
     overflow: hidden;
     display: flex;
@@ -19,6 +60,7 @@ body {
     align-items: center;
     min-height: 100vh;
     flex-direction: column;
+    background-color: $verylight-gray;
 
     .top-background {
         position: absolute;
@@ -34,7 +76,7 @@ body {
         position: absolute;
         top: 5%;
         width: 750px;
-        border: 1px solid green;
+        padding: 1rem;
                 
         .header {
             display: flex;
@@ -57,5 +99,59 @@ body {
                 cursor: pointer;
             }
         }
+
+        .list-items {
+
+            .input-field {
+                background-color: $verylight-gray;
+                padding: .7rem;
+                width: 100%;
+                border: none;
+                border-bottom: 1px solid $vd-grayish-blue;
+                font-family: 'Josefin Sans', sans-serif;
+                display: flex;
+                border-radius: 6px;
+
+                input[type="text"]{
+                    margin-left: 1rem;
+                    font-size: 18px;
+                    border: none;
+                    outline: none;
+                }
+
+                input[type="checkbox"]{
+                   display: none;
+                }
+            }
+
+            .items {
+                padding: .7rem;
+                margin-top: 1rem;
+                outline: 1px solid $verylight-gray;
+                border-radius: 5px;
+                background-color: #fff;
+                
+                .todo-item {
+                    padding: 1rem;
+                    border-bottom: 1px solid $verylight-grayish;
+                }
+            }
+
+            .footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #fff;
+                padding: 1rem;
+
+            }
+
+            .info-text {
+               text-align: center;
+            }
+
+           
+        }
+
     }
 }
