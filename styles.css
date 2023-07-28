@@ -182,6 +182,8 @@ button img {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  margin-top: 1rem;
 }
 .list-items .info-text {
   text-align: center;
@@ -197,6 +199,12 @@ button img {
 @media (min-width: 650px) {
   .list-items .footer .button-wrapper {
     display: block;
+  }
+  .list-items .items .action-btns {
+    visibility: hidden;
+  }
+  .list-items .items:hover .action-btns {
+    visibility: visible;
   }
   .list-items .button-wrapper-mb {
     display: none;
