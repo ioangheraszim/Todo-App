@@ -3,7 +3,9 @@
 /*Neutral Colors*/
 /* Light Theme */
 /* Dark Theme Colors */
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
