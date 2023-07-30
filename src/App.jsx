@@ -6,13 +6,21 @@ import BottomText from "./components/BottomText";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [todo, setTodo] = useState([]);
+  const [todo, setTodo] = useState([
+    {
+      id: crypto.randomUUID(),
+      text: "something",
+      completed: false,
+    },
+  ]);
+
+  console.log(todo);
 
   const addTodo = () => {
     if (inputValue.trim() !== "") {
       setTodo((prevTodo) => [
         ...prevTodo,
-        { text: inputValue, completed: false },
+        { id: crypto.randomUUID(), text: inputValue, completed: false },
       ]);
       setInputValue("");
     }
@@ -20,7 +28,6 @@ function App() {
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
-    console.log(inputValue);
   };
 
   const handleKeyPress = (e) => {
@@ -50,6 +57,7 @@ function App() {
             </button>
             <input
               className="item-input"
+              value={inputValue}
               type="text"
               class="input-field"
               placeholder="Create a new todo..."
@@ -84,7 +92,7 @@ function App() {
           ))}
           <div className="footer">
             <div className="left-side">
-              <p>5 items left</p>
+              <p>{todo.length} items left</p>
             </div>
             <div className="button-wrapper">
               <button>All</button>
@@ -101,7 +109,7 @@ function App() {
             <button>Completed</button>
           </div>
         </div>
-        <BottomText />
+        <BottomText task={todo} />
       </div>
     </div>
   );

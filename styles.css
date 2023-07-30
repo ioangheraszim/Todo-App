@@ -75,7 +75,7 @@ input[type=checkbox] + label::after {
 
 /* Show the checkmark when the checkbox is checked */
 input[type=checkbox]:checked + label::after {
-  transform: translate(-50%, -50%) scale(1); /* Scale to 1 on checked state */
+  transform: translate(-50%, -50%) scale(1);
 }
 
 button img {
