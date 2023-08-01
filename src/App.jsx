@@ -6,7 +6,7 @@ import BottomText from "./components/BottomText";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [todo, setTodo] = useState([
+  const [todos, setTodos] = useState([
     {
       id: crypto.randomUUID(),
       text: "something",
@@ -14,17 +14,25 @@ function App() {
     },
   ]);
 
-  console.log(todo);
+  console.log(todos);
 
   const addTodo = () => {
     if (inputValue.trim() !== "") {
-      setTodo((prevTodo) => [
+      setTodos((prevTodo) => [
         ...prevTodo,
         { id: crypto.randomUUID(), text: inputValue, completed: false },
       ]);
       setInputValue("");
     }
   };
+
+  const deleteTodo = (id) => {
+    setTodos((prevTodo) => {
+      return prevTodo.filter((todo) => todo.id !== id);
+    });
+  };
+
+  const editTodo = () => {};
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
@@ -37,15 +45,15 @@ function App() {
   };
 
   return (
-    <div class="container">
-      <div class="top-background"></div>
-      <div class="wrapper">
-        <div class="header">
-          <div class="logo">
+    <div className="container">
+      <div className="top-background"></div>
+      <div className="wrapper">
+        <div className="header">
+          <div className="logo">
             <h1>TODO</h1>
           </div>
           <div className="theme-btn">
-            <button class="change-button">
+            <button className="change-button">
               <img src="./src/assets/images/icon-sun.svg" />
             </button>
           </div>
@@ -56,10 +64,9 @@ function App() {
               <img src="./src/assets/images/add-circle.svg" />
             </button>
             <input
-              className="item-input"
               value={inputValue}
               type="text"
-              class="input-field"
+              className="input-field"
               placeholder="Create a new todo..."
               onChange={handleInput}
               onKeyDown={handleKeyPress}
@@ -67,32 +74,31 @@ function App() {
           </div>
         </div>
         <div className="list-items">
-          {todo.map((item, index) => (
-            <div className="items" key={index}>
-              <div className="todo-item">
-                <input type="checkbox" id={`myCheckbox${index}`} />
-                <label htmlFor={`myCheckbox${index}`}></label>
-                <p
-                  style={{
-                    textDecoration: todo.completed ? "line-through" : "none",
-                  }}
-                >
-                  {item.text}
-                </p>
+          {todos.map((todo) => {
+            return (
+              <div className="items" key={todo.id}>
+                <div className="todo-item">
+                  <input type="checkbox" id={`myCheckbox${todo.id}`} />
+                  <label htmlFor={`myCheckbox${todo.id}`}></label>
+                  <p>{todo.text}</p>
+                </div>
+                <div className="action-btns">
+                  <button>
+                    <img src="./src/assets/images/pencil.svg" />
+                  </button>
+                  <button
+                    onClick={() => deleteTodo(todo.id)}
+                    className="delete-btn"
+                  >
+                    <img src="./src/assets/images/icon-cross.svg" />
+                  </button>
+                </div>
               </div>
-              <div className="action-btns">
-                <button>
-                  <img src="./src/assets/images/pencil.svg" />
-                </button>
-                <button>
-                  <img src="./src/assets/images/icon-cross.svg" />
-                </button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
           <div className="footer">
             <div className="left-side">
-              <p>{todo.length} items left</p>
+              <p>{todos.length} items left</p>
             </div>
             <div className="button-wrapper">
               <button>All</button>
@@ -109,7 +115,7 @@ function App() {
             <button>Completed</button>
           </div>
         </div>
-        <BottomText task={todo} />
+        <BottomText task={todos} />
       </div>
     </div>
   );
