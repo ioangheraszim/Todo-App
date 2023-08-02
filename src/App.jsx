@@ -14,14 +14,26 @@ function App() {
     },
   ]);
 
-  console.log(todos);
+  const [selectedTodo, setSelectedTodo] = useState(null);
+  const [editValue, setEditValue] = useState("");
 
   const addTodo = () => {
     if (inputValue.trim() !== "") {
-      setTodos((prevTodo) => [
-        ...prevTodo,
-        { id: crypto.randomUUID(), text: inputValue, completed: false },
-      ]);
+      if (selectedTodo) {
+        // Update existing todo
+        setTodos((prevTodos) =>
+          prevTodos.map((todo) =>
+            todo.id === selectedTodo.id ? { ...todo, text: inputValue } : todo
+          )
+        );
+        setSelectedTodo(null);
+      } else {
+        // Add new todo
+        setTodos((prevTodos) => [
+          ...prevTodos,
+          { id: crypto.randomUUID(), text: inputValue, completed: false },
+        ]);
+      }
       setInputValue("");
     }
   };
@@ -32,7 +44,25 @@ function App() {
     });
   };
 
-  const editTodo = () => {};
+  const editTodo = (id) => {
+    const selected = todos.find((todo) => todo.id === id);
+    if (selected) {
+      setSelectedTodo(selected);
+      setEditValue(selected.text); // Set the editValue with the selected todo's text
+    }
+  };
+
+  const saveTodo = () => {
+    if (editValue.trim() !== "") {
+      setTodos((prevTodos) =>
+        prevTodos.map((todo) =>
+          todo.id === selectedTodo.id ? { ...todo, text: editValue } : todo
+        )
+      );
+      setSelectedTodo(null);
+      setEditValue(""); // Reset editValue state
+    }
+  };
 
   const handleInput = (e) => {
     setInputValue(e.target.value);
@@ -80,40 +110,44 @@ function App() {
                 <div className="todo-item">
                   <input type="checkbox" id={`myCheckbox${todo.id}`} />
                   <label htmlFor={`myCheckbox${todo.id}`}></label>
-                  <p>{todo.text}</p>
+                  {selectedTodo && selectedTodo.id === todo.id ? (
+                    <input
+                      type="text"
+                      value={editValue}
+                      onChange={(e) => setEditValue(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          saveTodo();
+                        }
+                      }}
+                    />
+                  ) : (
+                    <p>{todo.text}</p>
+                  )}
                 </div>
                 <div className="action-btns">
-                  <button>
-                    <img src="./src/assets/images/pencil.svg" />
-                  </button>
+                  {selectedTodo && selectedTodo.id === todo.id ? (
+                    <button onClick={saveTodo} className="edit-btn">
+                      Save
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => editTodo(todo.id)}
+                      className="edit-btn"
+                    >
+                      Edit
+                    </button>
+                  )}
                   <button
                     onClick={() => deleteTodo(todo.id)}
                     className="delete-btn"
                   >
-                    <img src="./src/assets/images/icon-cross.svg" />
+                    Delete
                   </button>
                 </div>
               </div>
             );
           })}
-          <div className="footer">
-            <div className="left-side">
-              <p>{todos.length} items left</p>
-            </div>
-            <div className="button-wrapper">
-              <button>All</button>
-              <button>Active</button>
-              <button>Completed</button>
-            </div>
-            <div className="clear-button">
-              <button className="clear-btn">Clear Completed</button>
-            </div>
-          </div>
-          <div className="button-wrapper-mb">
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
-          </div>
         </div>
         <BottomText task={todos} />
       </div>
