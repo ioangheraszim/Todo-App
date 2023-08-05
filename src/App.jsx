@@ -120,6 +120,7 @@ function App() {
                           saveTodo();
                         }
                       }}
+                      className="edit-input"
                     />
                   ) : (
                     <p>{todo.text}</p>

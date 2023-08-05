@@ -204,6 +204,17 @@ button {
       align-items: center;
     }
 
+    .edit-input{
+      border: none;
+      font-size: 1.2rem;
+      border-bottom: 1px solid $dark-grayish-blue;
+      padding: 0.3rem;
+      outline: none;
+      font-family: "Josefin Sans", sans-serif;
+      
+    }
+    
+
     .action-btns {
       visibility: visible;
     }
