@@ -5,6 +5,8 @@ import DisplayTodoList from "./components/DisplayTodoList";
 import BottomText from "./components/BottomText";
 
 function App() {
+
+  /** States */
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([
     {
@@ -17,6 +19,8 @@ function App() {
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [editValue, setEditValue] = useState("");
 
+
+  /** Functions */
   const addTodo = () => {
     if (inputValue.trim() !== "") {
       if (selectedTodo) {
@@ -38,12 +42,14 @@ function App() {
     }
   };
 
+  /** Deletes the todo items from the list */
   const deleteTodo = (id) => {
     setTodos((prevTodo) => {
       return prevTodo.filter((todo) => todo.id !== id);
     });
   };
 
+  /** Edits the todo items from the list */
   const editTodo = (id) => {
     const selected = todos.find((todo) => todo.id === id);
     if (selected) {
@@ -52,6 +58,7 @@ function App() {
     }
   };
 
+  /** Saves the edited values of the todo list */
   const saveTodo = () => {
     if (editValue.trim() !== "") {
       setTodos((prevTodos) =>
@@ -64,6 +71,7 @@ function App() {
     }
   };
 
+  /** Handles the input values */
   const handleInput = (e) => {
     setInputValue(e.target.value);
   };
@@ -74,6 +82,7 @@ function App() {
     }
   };
 
+  /** Returns the HTML / JSX */
   return (
     <div className="container">
       <div className="top-background"></div>
