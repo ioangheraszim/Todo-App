@@ -19,6 +19,13 @@ function App() {
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [editValue, setEditValue] = useState("");
 
+  const toggleCompletion = (id) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
 
   /** Functions */
   const addTodo = () => {
@@ -35,7 +42,11 @@ function App() {
         // Add new todo
         setTodos((prevTodos) => [
           ...prevTodos,
-          { id: crypto.randomUUID(), text: inputValue, completed: false },
+          { 
+            id: crypto.randomUUID(), 
+            text: inputValue, 
+            completed: false 
+          },
         ]);
       }
       setInputValue("");
@@ -82,7 +93,7 @@ function App() {
     }
   };
 
-  /** Returns the HTML / JSX */
+  /** Returns the JSX code handling the user interface displaying todos and handling user interactions*/
   return (
     <div className="container">
       <div className="top-background"></div>
@@ -117,8 +128,15 @@ function App() {
             return (
               <div className="items" key={todo.id}>
                 <div className="todo-item">
-                  <input type="checkbox" id={`myCheckbox${todo.id}`} />
-                  <label htmlFor={`myCheckbox${todo.id}`}></label>
+                <input 
+                  type="checkbox" 
+                  id={`myCheckbox${todo.id}`}
+                  checked={todo.completed}
+                  onChange={() => toggleCompletion(todo.id)}
+                  name="completed" 
+                />
+                  <label 
+                    htmlFor={`myCheckbox${todo.id}`}></label>
                   {selectedTodo && selectedTodo.id === todo.id ? (
                     <input
                       type="text"
@@ -132,7 +150,9 @@ function App() {
                       className="edit-input"
                     />
                   ) : (
-                    <p>{todo.text}</p>
+                    <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
+                    {todo.text}
+                  </p>
                   )}
                 </div>
                 <div className="action-btns">
