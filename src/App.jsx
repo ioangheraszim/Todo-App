@@ -5,7 +5,6 @@ import DisplayTodoList from "./components/DisplayTodoList";
 import BottomText from "./components/BottomText";
 
 function App() {
-
   /** States */
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([
@@ -42,10 +41,10 @@ function App() {
         // Add new todo
         setTodos((prevTodos) => [
           ...prevTodos,
-          { 
-            id: crypto.randomUUID(), 
-            text: inputValue, 
-            completed: false 
+          {
+            id: crypto.randomUUID(),
+            text: inputValue,
+            completed: false,
           },
         ]);
       }
@@ -81,6 +80,11 @@ function App() {
       setEditValue(""); // Reset editValue state
     }
   };
+
+  /** removes all the completed items from the todo list */
+  const handleClearCompleted = () => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed))
+  }
 
   /** Handles the input values */
   const handleInput = (e) => {
@@ -128,15 +132,14 @@ function App() {
             return (
               <div className="items" key={todo.id}>
                 <div className="todo-item">
-                <input 
-                  type="checkbox" 
-                  id={`myCheckbox${todo.id}`}
-                  checked={todo.completed}
-                  onChange={() => toggleCompletion(todo.id)}
-                  name="completed" 
-                />
-                  <label 
-                    htmlFor={`myCheckbox${todo.id}`}></label>
+                  <input
+                    type="checkbox"
+                    id={`myCheckbox${todo.id}`}
+                    checked={todo.completed}
+                    onChange={() => toggleCompletion(todo.id)}
+                    name="completed"
+                  />
+                  <label htmlFor={`myCheckbox${todo.id}`}></label>
                   {selectedTodo && selectedTodo.id === todo.id ? (
                     <input
                       type="text"
@@ -150,9 +153,15 @@ function App() {
                       className="edit-input"
                     />
                   ) : (
-                    <p style={{ textDecoration: todo.completed ? "line-through" : "none" }}>
-                    {todo.text}
-                  </p>
+                    <p
+                      style={{
+                        textDecoration: todo.completed
+                          ? "line-through"
+                          : "none",
+                      }}
+                    >
+                      {todo.text}
+                    </p>
                   )}
                 </div>
                 <div className="action-btns">
@@ -188,7 +197,7 @@ function App() {
               <button>Completed</button>
             </div>
             <div className="clear-button">
-              <button className="clear-btn">Clear Completed</button>
+              <button className="clear-btn" onClick={handleClearCompleted}>Clear Completed</button>
             </div>
           </div>
           <div className="button-wrapper-mb">
