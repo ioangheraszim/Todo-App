@@ -1,16 +1,18 @@
-export default function Footer() {
+export default function Footer({ todos, setFilter, handleClearCompleted }) {
   return (
     <div className="footer">
       <div className="left-side">
-        <p>5 items left</p>
+        <p>{todos.length} items left</p>
       </div>
       <div className="button-wrapper">
-        <button>All</button>
-        <button>Active</button>
-        <button>Completed</button>
+        <button onClick={() => setFilter("all")}>All</button>
+        <button onClick={() => setFilter("active")}>Active</button>
+        <button onClick={() => setFilter("completed")}>Completed</button>
       </div>
       <div className="clear-button">
-        <button className="clear-btn">Clear Completed</button>
+        <button className="clear-btn" onClick={handleClearCompleted}>
+          Clear Completed
+        </button>
       </div>
     </div>
   );

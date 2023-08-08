@@ -1,22 +1,28 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import AddList from "./components/AddList";
-import DisplayTodoList from "./components/DisplayTodoList";
 import BottomText from "./components/BottomText";
+import AddList from "./components/AddList";
+import Footer from "./components/Footer";
+import ButtonsMobile from "./components/ButtonsMobile";
 
 function App() {
   /** States */
   const [inputValue, setInputValue] = useState("");
-  const [todos, setTodos] = useState([
-    {
-      id: crypto.randomUUID(),
-      text: "something",
-      completed: false,
-    },
-  ]);
-
+  const [todos, setTodos] = useState([]);
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [editValue, setEditValue] = useState("");
+  const [filter, setFilter] = useState("all");
+
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "all") {
+      return true;
+    } else if (filter === "active") {
+      return !todo.completed;
+    } else if (filter === "completed") {
+      return todo.completed;
+    }
+    return true;
+  });
 
   const toggleCompletion = (id) => {
     setTodos((prevTodos) =>
@@ -83,8 +89,8 @@ function App() {
 
   /** removes all the completed items from the todo list */
   const handleClearCompleted = () => {
-    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed))
-  }
+    setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed));
+  };
 
   /** Handles the input values */
   const handleInput = (e) => {
@@ -102,33 +108,15 @@ function App() {
     <div className="container">
       <div className="top-background"></div>
       <div className="wrapper">
-        <div className="header">
-          <div className="logo">
-            <h1>TODO</h1>
-          </div>
-          <div className="theme-btn">
-            <button className="change-button">
-              <img src="./src/assets/images/icon-sun.svg" />
-            </button>
-          </div>
-        </div>
-        <div className="add-todo">
-          <div className="input-field">
-            <button onClick={addTodo}>
-              <img src="./src/assets/images/add-circle.svg" />
-            </button>
-            <input
-              value={inputValue}
-              type="text"
-              className="input-field"
-              placeholder="Create a new todo..."
-              onChange={handleInput}
-              onKeyDown={handleKeyPress}
-            />
-          </div>
-        </div>
+        <Header />
+        <AddList
+          inputValue={inputValue}
+          handleInput={handleInput}
+          handleKeyPress={handleKeyPress}
+          addTodo={addTodo}
+        />
         <div className="list-items">
-          {todos.map((todo) => {
+          {filteredTodos.map((todo) => {
             return (
               <div className="items" key={todo.id}>
                 <div className="todo-item">
@@ -187,24 +175,12 @@ function App() {
               </div>
             );
           })}
-          <div className="footer">
-            <div className="left-side">
-              <p>{todos.length} items left</p>
-            </div>
-            <div className="button-wrapper">
-              <button>All</button>
-              <button>Active</button>
-              <button>Completed</button>
-            </div>
-            <div className="clear-button">
-              <button className="clear-btn" onClick={handleClearCompleted}>Clear Completed</button>
-            </div>
-          </div>
-          <div className="button-wrapper-mb">
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
-          </div>
+          <Footer
+            todos={todos}
+            setFilter={setFilter}
+            handleClearCompleted={handleClearCompleted}
+          />
+          <ButtonsMobile setFilter={setFilter} />
         </div>
         <BottomText task={todos} />
       </div>

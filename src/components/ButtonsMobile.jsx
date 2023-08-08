@@ -1,9 +1,9 @@
-export default function ButtonsMobile() {
+export default function ButtonsMobile({setFilter}) {
   return (
     <div className="button-wrapper-mb">
-      <button>All</button>
-      <button>Active</button>
-      <button>Completed</button>
+      <button onClick={() => setFilter("all")}>All</button>
+      <button onClick={() => setFilter("active")}>Active</button>
+      <button onClick={() => setFilter("completed")}>Completed</button>
     </div>
   );
 }

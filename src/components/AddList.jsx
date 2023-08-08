@@ -1,24 +1,20 @@
-export default function AddList() {
-  const [inputValue, setInputValue] = useState("");
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
+export default function AddList({ inputValue, handleInput, handleKeyPress, addTodo }) {
 
   return (
     <div className="add-todo">
-      <div className="input-field">
-        <button>
-          <img src="./src/assets/images/add-circle.svg" />
-        </button>
-        <input
-          className="item-input"
-          type="text"
-          class="input-field"
-          placeholder="Create a new todo..."
-          onChange={handleInputChange}
-        />
-      </div>
+    <div className="input-field">
+      <button onClick={addTodo}>
+        <img src="./src/assets/images/add-circle.svg" />
+      </button>
+      <input
+        value={inputValue}
+        type="text"
+        className="input-field"
+        placeholder="Create a new todo..."
+        onChange={handleInput}
+        onKeyDown={handleKeyPress}
+      />
     </div>
+  </div>
   );
 }
