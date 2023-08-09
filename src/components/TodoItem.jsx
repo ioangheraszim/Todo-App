@@ -51,7 +51,7 @@ export default function TodoItem({
           </button>
         )}
         <button onClick={() => deleteTodo(todo.id)} className="delete-btn">
-        <img src="./src/assets/images/icon-cross.svg" alt="save button" />
+          <img src="./src/assets/images/icon-cross.svg" alt="save button" />
         </button>
       </div>
     </div>

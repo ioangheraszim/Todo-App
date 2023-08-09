@@ -1,4 +1,4 @@
-export default function ButtonsMobile({setFilter}) {
+export default function ButtonsMobile({ setFilter }) {
   return (
     <div className="button-wrapper-mb">
       <button onClick={() => setFilter("all")}>All</button>

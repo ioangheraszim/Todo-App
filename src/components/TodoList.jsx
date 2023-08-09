@@ -1,6 +1,14 @@
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ filteredTodos, selectedTodo, editValue, toggleCompletion, editTodo, deleteTodo, saveTodo,}) {
+export default function TodoList({
+  filteredTodos,
+  selectedTodo,
+  editValue,
+  toggleCompletion,
+  editTodo,
+  deleteTodo,
+  saveTodo,
+}) {
   return (
     <div className="list-items">
       {filteredTodos.map((todo) => (
