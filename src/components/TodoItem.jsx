@@ -43,15 +43,15 @@ export default function TodoItem({
       <div className="action-btns">
         {selectedTodo && selectedTodo.id === todo.id ? (
           <button onClick={saveTodo} className="edit-btn">
-            Save
+            <img src="./src/assets/images/icon-save.svg" alt="save button" />
           </button>
         ) : (
           <button onClick={() => editTodo(todo.id)} className="edit-btn">
-            Edit
+            <img src="./src/assets/images/pencil.svg" alt="save button" />
           </button>
         )}
         <button onClick={() => deleteTodo(todo.id)} className="delete-btn">
-          Delete
+        <img src="./src/assets/images/icon-cross.svg" alt="save button" />
         </button>
       </div>
     </div>
