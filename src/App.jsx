@@ -4,7 +4,7 @@ import BottomText from "./components/BottomText";
 import AddList from "./components/AddList";
 import Footer from "./components/Footer";
 import ButtonsMobile from "./components/ButtonsMobile";
-
+import TodoList from "./components/TodoList";
 function App() {
   /** States */
   const [inputValue, setInputValue] = useState("");
@@ -87,7 +87,7 @@ function App() {
     }
   };
 
-  /** removes all the completed items from the todo list */
+  /** Removes all the completed items from the todo list */
   const handleClearCompleted = () => {
     setTodos((prevTodos) => prevTodos.filter((todo) => !todo.completed));
   };
@@ -116,65 +116,15 @@ function App() {
           addTodo={addTodo}
         />
         <div className="list-items">
-          {filteredTodos.map((todo) => {
-            return (
-              <div className="items" key={todo.id}>
-                <div className="todo-item">
-                  <input
-                    type="checkbox"
-                    id={`myCheckbox${todo.id}`}
-                    checked={todo.completed}
-                    onChange={() => toggleCompletion(todo.id)}
-                    name="completed"
-                  />
-                  <label htmlFor={`myCheckbox${todo.id}`}></label>
-                  {selectedTodo && selectedTodo.id === todo.id ? (
-                    <input
-                      type="text"
-                      value={editValue}
-                      onChange={(e) => setEditValue(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          saveTodo();
-                        }
-                      }}
-                      className="edit-input"
-                    />
-                  ) : (
-                    <p
-                      style={{
-                        textDecoration: todo.completed
-                          ? "line-through"
-                          : "none",
-                      }}
-                    >
-                      {todo.text}
-                    </p>
-                  )}
-                </div>
-                <div className="action-btns">
-                  {selectedTodo && selectedTodo.id === todo.id ? (
-                    <button onClick={saveTodo} className="edit-btn">
-                      Save
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => editTodo(todo.id)}
-                      className="edit-btn"
-                    >
-                      Edit
-                    </button>
-                  )}
-                  <button
-                    onClick={() => deleteTodo(todo.id)}
-                    className="delete-btn"
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+          <TodoList
+            filteredTodos={filteredTodos}
+            selectedTodo={selectedTodo}
+            editValue={editValue}
+            toggleCompletion={toggleCompletion}
+            editTodo={editTodo}
+            deleteTodo={deleteTodo}
+            saveTodo={saveTodo}
+          />
           <Footer
             todos={todos}
             setFilter={setFilter}
