@@ -1,4 +1,4 @@
-export default function TodoItem({
+function TodoItem({
   todo,
   selectedTodo,
   editValue,
@@ -6,9 +6,11 @@ export default function TodoItem({
   editTodo,
   deleteTodo,
   saveTodo,
+  setEditValue,
+  dark
 }) {
   return (
-    <div className="items" key={todo.id}>
+    <div className={`items ${dark ? "dark" : ""}`} key={todo.id}>
       <div className="todo-item">
         <input
           type="checkbox"
@@ -43,17 +45,19 @@ export default function TodoItem({
       <div className="action-btns">
         {selectedTodo && selectedTodo.id === todo.id ? (
           <button onClick={saveTodo} className="edit-btn">
-            <img src="./src/assets/images/icon-save.svg" alt="save button" />
+            <img src="./src/assets/images/icon-save.svg" alt="save image" />
           </button>
         ) : (
           <button onClick={() => editTodo(todo.id)} className="edit-btn">
-            <img src="./src/assets/images/pencil.svg" alt="save button" />
+            <img src="./src/assets/images/pencil.svg" alt="edit image" />
           </button>
         )}
         <button onClick={() => deleteTodo(todo.id)} className="delete-btn">
-          <img src="./src/assets/images/icon-cross.svg" alt="save button" />
+          <img src="./src/assets/images/icon-cross.svg" alt="delete image" />
         </button>
       </div>
     </div>
   );
 }
+
+export default TodoItem;

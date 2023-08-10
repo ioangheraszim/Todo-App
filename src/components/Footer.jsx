@@ -1,6 +1,6 @@
-export default function Footer({ todos, setFilter, handleClearCompleted }) {
+export default function Footer({ todos, setFilter, handleClearCompleted, dark }) {
   return (
-    <div className="footer">
+    <div className={`footer ${dark ? "dark" : ""}`}>
       <div className="left-side">
         <p>{todos.length} items left</p>
       </div>

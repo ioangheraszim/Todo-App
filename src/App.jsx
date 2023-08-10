@@ -13,7 +13,7 @@ function App() {
   const [selectedTodo, setSelectedTodo] = useState(null);
   const [editValue, setEditValue] = useState("");
   const [filter, setFilter] = useState("all");
-
+  const [dark, setDark] = useState(false);
   const filteredTodos = todos.filter((todo) => {
     if (filter === "all") {
       return true;
@@ -24,6 +24,10 @@ function App() {
     }
     return true;
   });
+
+  const handleThemeChange = () => {
+    setDark(!dark);
+  };
 
   const toggleCompletion = (id) => {
     setTodos((prevTodos) =>
@@ -106,15 +110,17 @@ function App() {
 
   /** Returns the JSX code handling the user interface displaying todos and handling user interactions*/
   return (
-    <div className="container">
+    <div className={`container ${dark ? "dark" : ""}`}>
       <div className="top-background"></div>
       <div className="wrapper">
-        <Header />
+        <Header handleThemeChange={handleThemeChange} dark={dark} />
         <AddList
           inputValue={inputValue}
           handleInput={handleInput}
           handleKeyPress={handleKeyPress}
           addTodo={addTodo}
+          handleThemeChange={handleThemeChange} 
+          dark={dark}
         />
         <div className="list-items">
           <TodoList
@@ -125,13 +131,16 @@ function App() {
             editTodo={editTodo}
             deleteTodo={deleteTodo}
             saveTodo={saveTodo}
+            setEditValue={setEditValue}
+            dark={dark}
           />
           <Footer
             todos={todos}
             setFilter={setFilter}
             handleClearCompleted={handleClearCompleted}
+            dark={dark}
           />
-          <ButtonsMobile setFilter={setFilter} />
+          <ButtonsMobile dark={dark} setFilter={setFilter} />
         </div>
         <BottomText task={todos} />
       </div>

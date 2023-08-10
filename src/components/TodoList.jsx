@@ -8,6 +8,8 @@ export default function TodoList({
   editTodo,
   deleteTodo,
   saveTodo,
+  setEditValue,
+  dark
 }) {
   return (
     <div className="list-items">
@@ -21,6 +23,8 @@ export default function TodoList({
           editTodo={editTodo}
           deleteTodo={deleteTodo}
           saveTodo={saveTodo}
+          setEditValue={setEditValue}
+          dark={dark}
         />
       ))}
     </div>

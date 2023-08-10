@@ -82,6 +82,10 @@ button img {
   width: 1rem;
 }
 
+.container.dark {
+  background: hsl(235, 21%, 11%);
+}
+
 .container {
   position: relative;
   display: flex;
@@ -135,6 +139,11 @@ button img {
 .add-todo {
   margin-bottom: 1.5rem;
 }
+.add-todo .input-field.dark, .add-todo input[type=text].dark, .add-todo .items.dark {
+  background-color: hsl(237, 14%, 26%);
+  color: #fff;
+  transition: 0.2ms ease-in;
+}
 .add-todo .input-field {
   background-color: hsl(0, 0%, 98%);
   padding: 0.3rem;
@@ -154,10 +163,14 @@ button img {
   display: none;
 }
 
+.list-items .items.dark {
+  background-color: hsl(237, 14%, 26%);
+  color: #fff;
+  transition: 0.2ms ease-in;
+}
 .list-items .items {
   padding: 0.7rem;
-  outline: 1px solid hsl(0, 0%, 98%);
-  border-radius: 5px;
+  border-bottom: 1px solid hsl(234, 39%, 85%);
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -184,16 +197,26 @@ button img {
   align-items: center;
   background-color: #fff;
   padding: 1rem;
+  border-radius: 0 0 1rem 1rem;
 }
 .list-items .footer .button-wrapper {
   display: none;
+}
+.list-items .footer.dark {
+  background-color: hsl(237, 14%, 26%);
+  color: #FFF;
+  transition: 0.2ms ease-in;
 }
 .list-items .button-wrapper-mb {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
+  background-color: #fff;
   margin-top: 1rem;
+}
+.list-items .button-wrapper-mb.dark {
+  background-color: hsl(237, 14%, 26%);
+  transition: 0.2ms ease-in;
 }
 .list-items .info-text {
   text-align: center;

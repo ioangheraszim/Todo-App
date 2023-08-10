@@ -109,6 +109,9 @@ button {
     width: 1rem;
   }
 }
+.container.dark {
+  background: $verydark-blue;  
+}
 
 .container {
   position: relative;
@@ -165,7 +168,12 @@ button {
 
 .add-todo {
   margin-bottom: 1.5rem;
-
+  .input-field.dark,input[type="text"].dark, .items.dark {
+    background-color: $vd-grayish-blue-b;
+    color: #fff;
+    transition: 0.2ms ease-in;
+  }
+   
   .input-field {
     background-color: $verylight-gray;
     padding: 0.3rem;
@@ -188,11 +196,17 @@ button {
   }
 }
 
-.list-items {  
+.list-items { 
+
+  .items.dark {
+    background-color: $vd-grayish-blue-b;
+    color: #fff;
+    transition: 0.2ms ease-in;
+  }
+
   .items {
     padding: 0.7rem;
-    outline: 1px solid $verylight-gray;
-    border-radius: 5px;
+    border-bottom: 1px solid $light-grayish-blue;
     background-color: #fff;
 
     display: flex;
@@ -213,7 +227,6 @@ button {
       font-family: "Josefin Sans", sans-serif;
       
     }
-    
 
     .action-btns {
       visibility: visible;
@@ -226,19 +239,31 @@ button {
     align-items: center;
     background-color: #fff;
     padding: 1rem;
+    border-radius: 0 0 1rem 1rem;
 
     .button-wrapper {
       display: none;
     }
+
+  }
+
+  .footer.dark {
+    background-color: $vd-grayish-blue-b;
+    color: #FFF;
+    transition: 0.2ms ease-in;
   }
 
   .button-wrapper-mb {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background-color: #ffff;
+    background-color: #fff;
     margin-top: 1rem;
+  }
+
+  .button-wrapper-mb.dark {
+    background-color: $vd-grayish-blue-b;
+    transition: 0.2ms ease-in;
   }
 
   .info-text {
