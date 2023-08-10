@@ -101,8 +101,11 @@ button img {
   left: 0;
   width: 100%;
   height: 250px;
-  background-image: url("./src/assets/images/bg-desktop-dark.jpg");
+  background-image: url("./src/assets/images/bg-desktop-light.jpg");
   background-size: cover;
+}
+.container .top-background.dark {
+  background-image: url("./src/assets/images/bg-desktop-dark.jpg");
 }
 
 .wrapper {

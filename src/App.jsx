@@ -111,7 +111,7 @@ function App() {
   /** Returns the JSX code handling the user interface displaying todos and handling user interactions*/
   return (
     <div className={`container ${dark ? "dark" : ""}`}>
-      <div className="top-background"></div>
+      <div className={`top-background ${dark ? "dark" : ""}`}></div>
       <div className="wrapper">
         <Header handleThemeChange={handleThemeChange} dark={dark} />
         <AddList
