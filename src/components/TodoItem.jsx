@@ -36,6 +36,7 @@ function TodoItem({
           <p
             style={{
               textDecoration: todo.completed ? "line-through" : "none",
+              opacity: todo.completed ? 0.5 : 1
             }}
           >
             {todo.text}
@@ -45,11 +46,11 @@ function TodoItem({
       <div className="action-btns">
         {selectedTodo && selectedTodo.id === todo.id ? (
           <button onClick={saveTodo} className="edit-btn">
-            <img src="./src/assets/images/icon-save.svg" alt="save image" />
+            <img src="./src/assets/images/icon-saves.svg" alt="save image" />
           </button>
         ) : (
           <button onClick={() => editTodo(todo.id)} className="edit-btn">
-            <img src="./src/assets/images/pencil.svg" alt="edit image" />
+            <img src="./src/assets/images/icon-pencil.svg" alt="edit image" />
           </button>
         )}
         <button onClick={() => deleteTodo(todo.id)} className="delete-btn">

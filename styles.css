@@ -211,6 +211,9 @@ button img {
 .list-items .footer .button-wrapper {
   display: none;
 }
+.list-items .footer .left-side p {
+  color: hsl(234, 11%, 52%);
+}
 .list-items .footer.dark {
   background-color: hsl(237, 14%, 26%);
   color: #FFF;
