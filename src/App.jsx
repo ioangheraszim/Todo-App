@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import BottomText from "./components/BottomText";
 import AddList from "./components/AddList";
 import Footer from "./components/Footer";
 import ButtonsMobile from "./components/ButtonsMobile";
 import TodoList from "./components/TodoList";
-
+import { addTodo } from "./components/todoLogic";
 function App() {
   /** States */
   const [inputValue, setInputValue] = useState("");
@@ -14,6 +14,27 @@ function App() {
   const [editValue, setEditValue] = useState("");
   const [filter, setFilter] = useState("all");
   const [dark, setDark] = useState(false);
+  
+  const saveToLocal = () => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }
+
+  const loadFromLocal = () => {
+    const storedTodos = localStorage.getItem('todos')
+    return storedTodos ? JSON.parse(storedTodos) : []
+  }
+
+  useEffect(() => {
+    const loadedTodos = loadFromLocal();
+    if (loadedTodos.length > 0) {
+      setTodos(loadedTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    saveToLocal();
+  }, [todos]);
+  
   const filteredTodos = todos.filter((todo) => {
     if (filter === "all") {
       return true;
