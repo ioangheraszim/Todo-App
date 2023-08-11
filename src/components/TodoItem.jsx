@@ -30,7 +30,7 @@ function TodoItem({
                 saveTodo();
               }
             }}
-            className="edit-input"
+            className={`edit-input ${dark ? "dark" : ""}`}
           />
         ) : (
           <p

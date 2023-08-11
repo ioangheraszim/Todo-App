@@ -225,11 +225,17 @@ button {
     .edit-input{
       border: none;
       font-size: 1.2rem;
+      border: none;
       border-bottom: 1px solid $dark-grayish-blue;
       padding: 0.3rem;
       outline: none;
-      font-family: "Josefin Sans", sans-serif;
-      
+      font-family: "Josefin Sans", sans-serif;      
+    }
+
+    .edit-input.dark {
+      outline: none;
+      background-color: $vd-grayish-blue-b;
+      color: #FFF;
     }
 
     .action-btns {

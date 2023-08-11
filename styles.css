@@ -186,10 +186,16 @@ button img {
 .list-items .items .edit-input {
   border: none;
   font-size: 1.2rem;
+  border: none;
   border-bottom: 1px solid hsl(234, 11%, 52%);
   padding: 0.3rem;
   outline: none;
   font-family: "Josefin Sans", sans-serif;
+}
+.list-items .items .edit-input.dark {
+  outline: none;
+  background-color: hsl(237, 14%, 26%);
+  color: #FFF;
 }
 .list-items .items .action-btns {
   visibility: visible;
