@@ -37,8 +37,8 @@ Users should be able to:
 
 - Desktop Screenshots
 <p float="left">
-  <img src="./src/assets/screenshots/screenshot-desk-dark.png" width="450" />
-  <img src="./src/assets/screenshots/screenshot-desk-light.png"  width="450" /> 
+  <img src="./src/assets/screenshots/screenshot-desk-dark.png" />
+  <img src="./src/assets/screenshots/screenshot-desk-light.png" /> 
 </p>
 
 - Mobile Screenshots
