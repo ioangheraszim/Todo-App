@@ -163,7 +163,6 @@ function App() {
           />
           <ButtonsMobile dark={dark} setFilter={setFilter} />
         </div>
-        <BottomText task={todos} />
       </div>
     </div>
   );
