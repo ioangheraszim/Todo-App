@@ -37,14 +37,14 @@ Users should be able to:
 
 - Desktop Screenshots
 <p float="left">
-  <img src="./src/assets/screenshots/screenshot-desk-dark.png" width="550" />
-  <img src="./src/assets/screenshots/screenshot-desk-light.png"  width="550" /> 
+  <img src="./src/assets/screenshots/screenshot-desk-dark.png" width="450" />
+  <img src="./src/assets/screenshots/screenshot-desk-light.png"  width="450" /> 
 </p>
 
 - Mobile Screenshots
 <p>
-  <img src="./src/assets/screenshots/screenshot-mob-light.png" width="500" />
-  <img src="./src/assets/screenshots/screenshot-mob-dark.png"  width="500" />
+  <img src="./src/assets/screenshots/screenshot-mob-light.png" width="400" />
+  <img src="./src/assets/screenshots/screenshot-mob-dark.png"  width="400" />
 </p>
 
 
