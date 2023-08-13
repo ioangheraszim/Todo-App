@@ -3,7 +3,7 @@ export default function AddList({
   handleInput,
   handleKeyPress,
   addTodo,
-  dark
+  dark,
 }) {
   return (
     <div className="add-todo">

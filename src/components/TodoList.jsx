@@ -9,7 +9,7 @@ export default function TodoList({
   deleteTodo,
   saveTodo,
   setEditValue,
-  dark
+  dark,
 }) {
   return (
     <div className="list-items">

@@ -1,6 +1,6 @@
 # Frontend Mentor - Todo app solution
 
-This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -14,7 +14,6 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -47,10 +46,9 @@ Users should be able to:
   <img src="./src/assets/screenshots/screenshot-mob-dark.png"  width="400" />
 </p>
 
-
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [TODO App](https://github.com/ioangheraszim/Todo-App)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -63,50 +61,64 @@ Users should be able to:
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Through working on this project, I've gained a deeper understanding of React's state management. One significant learning point was mastering CRUD (CREATE READ UPDATE DELETE) operations, which became evident as I developed this React TODO App.
 
-To see how you can add code snippets, see below:
+To illustrate how I managed to filter active, completed, and all todo items within the list, I've provided a code snippet below. This code efficiently handles the categorization:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "all") {
+      return true;
+    } else if (filter === "active") {
+      return !todo.completed;
+    } else if (filter === "completed") {
+      return todo.completed;
+    }
+    return true;
+  });
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+By leveraging this code, I've successfully created a mechanism to filter the TODO list based on the selected category: "all," "active," or "completed." This code reflects my improved proficiency in React's core concepts and my ability to implement them in practical scenarios.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Another area where my understanding deepened was in using useEffect. By combining useEffect with localStorage, I successfully achieved the capability to save my todo list items directly in my web browser. This allowed me to maintain access to my todos even after refreshing or loading the page.
+
+Here's a code snippet demonstrating how I implemented this functionality:
+
+```js
+  const saveToLocal = () => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }
+
+  const loadFromLocal = () => {
+    const storedTodos = localStorage.getItem('todos')
+    return storedTodos ? JSON.parse(storedTodos) : []
+  }
+
+  useEffect(() => {
+    const loadedTodos = loadFromLocal();
+    if (loadedTodos.length > 0) {
+      setTodos(loadedTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    saveToLocal();
+  }, [todos]);
+```
+
+Through this code, I established a mechanism to save and load todos from the browser's local storage. The two useEffect hooks serve distinct purposes: one for loading initial todos when the component mounts, and the other for updating the storage whenever the todos change. This demonstrates my newfound grasp of efficiently managing state using useEffect and leveraging browser storage for data persistence.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+Looking ahead, I'm excited about the ongoing development journey. I plan to enhance my Javascript and React skills by delving into more projects that make use of React hooks and dive deeper into essential Javascript concepts. This hands-on approach will undoubtedly help solidify my proficiency in these areas and empower me to tackle even more complex challenges.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Youtube Web Dev Simplified](https://www.youtube.com/watch?v=Rh3tobg7hEo&t=1738s&ab_channel=WebDevSimplified) - The approach I encountered resonated well with me, and I intend to adopt this pattern in my future endeavors. It's evident that this pattern aligns with best practices, and I look forward to incorporating it into my ongoing work.
 
 ## Author
 
 - Website - [Ioan Gheraszim](https://github.com/ioangheraszim)
 - Frontend Mentor - [@ioangheraszim](https://www.frontendmentor.io/profile/ioangheraszim)
-
-
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
