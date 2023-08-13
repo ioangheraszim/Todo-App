@@ -9,7 +9,7 @@ export default function AddList({
     <div className="add-todo">
       <div className={`input-field ${dark ? "dark" : ""}`}>
         <button onClick={addTodo}>
-          <img src="./src/assets/images/add-circle.svg" />
+          <img src="./images/add-circle.svg" />
         </button>
         <input
           value={inputValue}
