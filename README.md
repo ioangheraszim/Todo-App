@@ -48,8 +48,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [TODO App](https://github.com/ioangheraszim/Todo-App)
-- Live Site URL: [TODO Live]([TODO LIVE](https://ioangheraszim.github.io/Todo-App/)
+- Solution URL: [TODO App Solution](https://github.com/ioangheraszim/Todo-App)
+- Live Site URL:[TODO App Live](https://ioangheraszim.github.io/Todo-App/)
 
 ## My process
 
