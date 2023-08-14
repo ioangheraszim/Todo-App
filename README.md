@@ -49,7 +49,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [TODO App](https://github.com/ioangheraszim/Todo-App)
-- Live Site URL: [TODO Live]([https://your-live-site-url.com](https://ioangheraszim.github.io/Todo-App/))
+- Live Site URL: [TODO Live]([https://your-live-site-url.com](https://ioangheraszim.github.io/Todo-App/)
 
 ## My process
 
